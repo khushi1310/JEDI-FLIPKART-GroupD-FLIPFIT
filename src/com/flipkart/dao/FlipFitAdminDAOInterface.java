@@ -6,7 +6,7 @@ import com.flipkart.bean.GymOwner;
 import java.sql.SQLException;
 import java.util.List;
 
-public interface AdminDAOInterface {
+public interface FlipFitAdminDAOInterface {
 
     public void viewGyms();
 

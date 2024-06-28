@@ -14,7 +14,7 @@ import java.sql.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class UpdatePasswordDAOImplementation implements UpdatePasswordDAOInterface {
+public class UpdatePasswordDAOImpl implements UpdatePasswordDAOInterface {
     DatabaseConnector connector;
     Connection conn;
 

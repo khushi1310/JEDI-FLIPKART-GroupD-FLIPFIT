@@ -6,13 +6,13 @@ import java.util.Scanner;
 
 import com.flipkart.bean.Gym;
 import com.flipkart.bean.GymOwner;
-import com.flipkart.dao.AdminDAOImplementation;
-import com.flipkart.dao.AdminDAOInterface;
+import com.flipkart.dao.FlipFitAdminDAOImpl;
+import com.flipkart.dao.FlipFitAdminDAOInterface;
 
-public class AdminServiceOperation implements AdminService{
+public class FlipFitAdminServiceOperation implements FlipFitAdminService{
 
 
-	AdminDAOInterface adminDaoInterface = new AdminDAOImplementation();
+	FlipFitAdminDAOInterface adminDaoInterface = new FlipFitAdminDAOImpl();
 	Scanner obj = new Scanner(System.in);
 
 	@Override

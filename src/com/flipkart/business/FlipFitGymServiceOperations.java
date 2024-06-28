@@ -2,7 +2,7 @@
 package com.flipkart.business;
 
 
-public class GymServiceOperations implements GymServices{
+public class FlipFitGymServiceOperations implements FlipFitGymServices{
 
 
 	@Override

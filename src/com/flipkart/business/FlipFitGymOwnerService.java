@@ -6,7 +6,7 @@ import java.util.List;
 import com.flipkart.bean.Gym;
 import com.flipkart.bean.GymOwner;
 
-public interface GymOwnerService {
+public interface FlipFitGymOwnerService {
 
 	void addGymWithSlots(Gym gym);
 

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class CustomerDAOImplementation implements CustomerDAOInterface {
+public class FlipFitCustomerDAOImpl implements FlipFitCustomerDAOInterface {
 
     DatabaseConnector connector ;
     Connection conn;

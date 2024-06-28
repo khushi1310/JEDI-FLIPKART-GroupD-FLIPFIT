@@ -6,16 +6,16 @@ import java.util.List;
 import com.flipkart.bean.Bookings;
 import com.flipkart.bean.Gym;
 import com.flipkart.bean.User;
-import com.flipkart.dao.CustomerDAOImplementation;
-import com.flipkart.dao.CustomerDAOInterface;
-import com.flipkart.dao.UpdatePasswordDAOImplementation;
+import com.flipkart.dao.FlipFitCustomerDAOImpl;
+import com.flipkart.dao.FlipFitCustomerDAOInterface;
+import com.flipkart.dao.UpdatePasswordDAOImpl;
 import com.flipkart.dao.UpdatePasswordDAOInterface;
 
 
-public class UserServiceOperations implements UserServices {
+public class FlipFitUserServiceOperations implements FlipFitUserServices {
 
-	CustomerDAOInterface customerDAOInterface = new CustomerDAOImplementation();
-	UpdatePasswordDAOInterface updatePasswordInterface = new UpdatePasswordDAOImplementation();
+	FlipFitCustomerDAOInterface flipFitCustomerDAOInterface = new FlipFitCustomerDAOImpl();
+	UpdatePasswordDAOInterface updatePasswordInterface = new UpdatePasswordDAOImpl();
 
 
 	@Override
@@ -28,7 +28,7 @@ public class UserServiceOperations implements UserServices {
 	public boolean cancelSlots(int bookingId) {
 		// TODO Auto-generated method stub
 
-		return customerDAOInterface.cancelBooking(bookingId);
+		return flipFitCustomerDAOInterface.cancelBooking(bookingId);
 	}
 
 
@@ -36,40 +36,40 @@ public class UserServiceOperations implements UserServices {
 	public List<Bookings> getAllBookings(String userId) {
 		// TODO Auto-generated method stub
 
-		return customerDAOInterface.getAllBookingByUserID( userId);
+		return flipFitCustomerDAOInterface.getAllBookingByUserID( userId);
 	}
 
 
 	@Override
 	public List<Gym> getAllGymsWithSlots() {
 		// TODO Auto-generated method stub
-		return customerDAOInterface.getAllGymsByArea();
+		return flipFitCustomerDAOInterface.getAllGymsByArea();
 	}
 
 
 	@Override
 	public List<Gym> getAllGymsByArea(String area) {
 		// TODO Auto-generated method stub
-		return customerDAOInterface.getAllGymsByArea();
+		return flipFitCustomerDAOInterface.getAllGymsByArea();
 
 	}
 
 
 	@Override
 	public boolean bookSlots(int gymId, int time, String email) {
-		return customerDAOInterface.bookSlot(gymId,time,email);
+		return flipFitCustomerDAOInterface.bookSlot(gymId,time,email);
 	}
 
 
 	@Override
 	public boolean validateUser(String username, String pass) {
-		return customerDAOInterface.validateUser(username,pass);
+		return flipFitCustomerDAOInterface.validateUser(username,pass);
 	}
 
 
 	@Override
 	public void createUser(User user) {
-		customerDAOInterface.createUser(user);
+		flipFitCustomerDAOInterface.createUser(user);
 	}
 
 

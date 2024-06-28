@@ -18,7 +18,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GymOwnerDAOImplementation implements GymOwnerDaoInterface {
+public class FlipfitGymOwnerDAOImpl implements FlipFitGymOwnerDAOInterface {
     Connection conn;
 
     DatabaseConnector connector;

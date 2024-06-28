@@ -6,7 +6,7 @@ import com.flipkart.bean.User;
 
 import java.util.List;
 
-public interface CustomerDAOInterface {
+public interface FlipFitCustomerDAOInterface {
 
     List<Gym> getAllGymsByArea();
 

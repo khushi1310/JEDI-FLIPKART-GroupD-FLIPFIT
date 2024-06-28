@@ -15,7 +15,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdminDAOImplementation implements AdminDAOInterface {
+public class FlipFitAdminDAOImpl implements FlipFitAdminDAOInterface {
     DatabaseConnector connector;
     Connection conn;
 

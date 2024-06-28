@@ -8,7 +8,7 @@ import com.flipkart.bean.Gym;
 import com.flipkart.bean.User;
 
 
-public interface UserServices {
+public interface FlipFitUserServices {
 
 
 	boolean cancelSlots(int slotId);

@@ -6,7 +6,7 @@ import com.flipkart.bean.GymOwner;
 import java.util.List;
 
 
-public interface AdminService {
+public interface FlipFitAdminService {
 
 
     public void viewGymOwners();

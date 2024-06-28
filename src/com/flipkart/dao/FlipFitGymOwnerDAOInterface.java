@@ -7,7 +7,7 @@ import com.flipkart.bean.Slots;
 import java.sql.SQLException;
 import java.util.List;
 
-public interface GymOwnerDaoInterface {
+public interface FlipFitGymOwnerDAOInterface {
 
     void insertSlots(List<Slots> slots, int gymId);
 
