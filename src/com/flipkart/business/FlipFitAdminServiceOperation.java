@@ -1,63 +1,55 @@
 package com.flipkart.business;
 
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
-
 import com.flipkart.bean.FlipFitGym;
 import com.flipkart.bean.FlipFitGymOwner;
 import com.flipkart.dao.FlipFitAdminDAOImpl;
 import com.flipkart.dao.FlipFitAdminDAOInterface;
 
-public class FlipFitAdminServiceOperation implements FlipFitAdminService{
+/**
+ * Implementation of FlipFitAdminService for administrative operations.
+ */
+public class FlipFitAdminServiceOperation implements FlipFitAdminService {
 
+    // DAO interface instance to interact with database
+    FlipFitAdminDAOInterface adminDaoInterface = new FlipFitAdminDAOImpl();
 
-	FlipFitAdminDAOInterface adminDaoInterface = new FlipFitAdminDAOImpl();
-	Scanner obj = new Scanner(System.in);
+    // Scanner object for user input
+    Scanner obj = new Scanner(System.in);
 
-	@Override
-	public void viewGymOwners() {
-		adminDaoInterface.viewGymOwners();
-	}
+    @Override
+    public void viewGymOwners() {
+        adminDaoInterface.viewGymOwners(); // Delegate to DAO to view gym owners
+    }
 
-	@Override
-	public void viewGyms() {
-		adminDaoInterface.viewGyms();
-	}
+    @Override
+    public void viewGyms() {
+        adminDaoInterface.viewGyms(); // Delegate to DAO to view gyms
+    }
 
+    @Override
+    public void viewUsers() {
+        adminDaoInterface.viewUsers(); // Delegate to DAO to view users
+    }
 
-	@Override
-	public void viewUsers() {
-		adminDaoInterface.viewUsers();
-	}
+    @Override
+    public void verifyGym(int gymId) {
+        adminDaoInterface.verifyGyms(gymId); // Delegate to DAO to verify a gym by ID
+    }
 
+    @Override
+    public void verifyGymOwner(int gymOwnerId) {
+        adminDaoInterface.verifyGymOwners(gymOwnerId); // Delegate to DAO to verify a gym owner by ID
+    }
 
-	@Override
-	public void verifyGym(int gymId) {
-		// TODO Auto-generated method stub
-		adminDaoInterface.verifyGyms(gymId);
-	}
+    @Override
+    public List<FlipFitGymOwner> getUnverifiedGymOwners() {
+        return adminDaoInterface.getUnverifiedGymOwner(); // Retrieve unverified gym owners from DAO
+    }
 
-
-	@Override
-	public void verifyGymOwner(int gymOwnerId) {
-		// TODO Auto-generated method stub
-		adminDaoInterface.verifyGymOwners(gymOwnerId);
-
-	}
-
-
-	@Override
-	public List<FlipFitGymOwner> getUnverifiedGymOwners() {
-		// TODO Auto-generated method stub
-		return adminDaoInterface.getUnverifiedGymOwner();
-	}
-
-
-	@Override
-	public List<FlipFitGym> getUnverifiedGyms() {
-		// TODO Auto-generated method stub
-		return adminDaoInterface.getUnverifiedGyms();
-	}
-
+    @Override
+    public List<FlipFitGym> getUnverifiedGyms() {
+        return adminDaoInterface.getUnverifiedGyms(); // Retrieve unverified gyms from DAO
+    }
 }

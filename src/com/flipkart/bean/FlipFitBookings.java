@@ -1,107 +1,86 @@
+
 package com.flipkart.bean;
 
-
-
-
 public class FlipFitBookings {
-	private int bookingId;
-	private int userId;
-	private int createdAt;
-	private int bookingStatus;
-	private int date;
-	private int time;
-	private int slotId;
-	private int gymId;
-	private String status;
+    private int bookingId;
+    private int userId;
+    private int createdAt;
+    private int bookingStatus;
+    private int date;
+    private int time;
+    private int slotId;
+    private int gymId;
+    private String status;
 
+    public int getDate() {
+        return date; // Retrieves the date of the booking.
+    }
 
+    public void setDate(int date) {
+        this.date = date; // Sets the date of the booking.
+    }
 
-	public int getDate() {
-		return date;
-	}
+    public int getSlotId() {
+        return slotId; // Retrieves the ID of the time slot booked.
+    }
 
+    public void setSlotId(int slotId) {
+        this.slotId = slotId; // Sets the ID of the time slot booked.
+    }
 
-	public void setDate(int date) {
-		this.date = date;
-	}
+    public int getGymId() {
+        return gymId; // Retrieves the ID of the gym where the booking is made.
+    }
 
+    public void setGymId(int gymId) {
+        this.gymId = gymId; // Sets the ID of the gym where the booking is made.
+    }
 
-	public int getSlotId() {
-		return slotId;
-	}
+    public String getStatus() {
+        return status; // Retrieves the status of the booking.
+    }
 
+    public void setStatus(String status) {
+        this.status = status; // Sets the status of the booking.
+    }
 
-	public void setSlotId(int slotId) {
-		this.slotId = slotId;
-	}
+    public int getTime() {
+        return time; // Retrieves the time of the booking.
+    }
 
+    public void setTime(int time) {
+        this.time = time; // Sets the time of the booking.
+    }
 
-	public int getGymId() {
-		return gymId;
-	}
+    public int getBookingId() {
+        return bookingId; // Retrieves the bookingId.
+    }
 
+    public void setBookingId(int bookingId) {
+        this.bookingId = bookingId; // Sets the bookingId.
+    }
 
-	public void setGymId(int gymId) {
-		this.gymId = gymId;
-	}
+    public int getUserId() {
+        return userId; // Retrieves the userId associated with the booking.
+    }
 
+    public void setUserId(int userId) {
+        this.userId = userId; // Sets the userId associated with the booking.
+    }
 
-	public String getStatus() {
-		return status;
-	}
+    public int getCreatedAt() {
+        return createdAt; // Retrieves the timestamp when the booking was created.
+    }
 
+    public void setCreatedAt(int createdAt) {
+        this.createdAt = createdAt; // Sets the timestamp when the booking was created.
+    }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    public int getBookingStatus() {
+        return bookingStatus; // Retrieves the status of the booking.
+    }
 
-
-	public int getTime() {
-		return time;
-	}
-
-
-	public void setTime(int time) {
-		this.time = time;
-	}
-
-
-	public int getBookingId() {
-		return bookingId;
-	}
-
-
-	public void setBookingId(int bookingId) {
-		this.bookingId = bookingId;
-	}
-
-
-	public int getUserId() {
-		return userId;
-	}
-
-
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-
-
-	public int getCreatedAt() {
-		return createdAt;
-	}
-
-
-	public void setCreatedAt(int createdAt) {
-		this.createdAt = createdAt;
-	}
-
-
-	public int getBookingStatus() {
-		return bookingStatus;
-	}
-
-
-	public void setBookingStatus(int bookingStatus) {
-		this.bookingStatus = bookingStatus;
-	}
+    public void setBookingStatus(int bookingStatus) {
+        this.bookingStatus = bookingStatus; // Sets the status of the booking.
+    }
 }
