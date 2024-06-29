@@ -1,8 +1,8 @@
 package com.flipkart.dao;
 
-import com.flipkart.bean.Gym;
-import com.flipkart.bean.GymOwner;
-import com.flipkart.bean.Slots;
+import com.flipkart.bean.FlipFitGym;
+import com.flipkart.bean.FlipFitGymOwner;
+import com.flipkart.bean.FlipFitSlots;
 
 import com.flipkart.exception.VerificationFailedException;
 
@@ -187,11 +187,11 @@ public class FlipFitAdminDAOImpl implements FlipFitAdminDAOInterface {
     }
 
     @Override
-    public List<Gym> getUnverifiedGyms() {
+    public List<FlipFitGym> getUnverifiedGyms() {
         conn = DatabaseConnector.getConnection();
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        List<Gym> gyms = new ArrayList<>();
+        List<FlipFitGym> flipFitGyms = new ArrayList<>();
 
         try {
             String sqlQuery = SQLConstants.ADMIN_VIEW_UNVERIFIED_GYMS;
@@ -206,27 +206,27 @@ public class FlipFitAdminDAOImpl implements FlipFitAdminDAOInterface {
                 String gymName = resultSet.getString("gymName");
                 String status = resultSet.getString("status");
                 String gymOwnerID = resultSet.getString("ownerId");
-                Gym gym = new Gym();
-                gym.setGymId(id);
-                gym.setGymName(gymName);
-                gym.setGymAddress(gymAddress);
-                gym.setOwnerId(gymOwnerID);
-                gym.setLocation(location);
-                gym.setStatus(status);
-                gyms.add(gym);
+                FlipFitGym flipFitGym = new FlipFitGym();
+                flipFitGym.setGymId(id);
+                flipFitGym.setGymName(gymName);
+                flipFitGym.setGymAddress(gymAddress);
+                flipFitGym.setOwnerId(gymOwnerID);
+                flipFitGym.setLocation(location);
+                flipFitGym.setStatus(status);
+                flipFitGyms.add(flipFitGym);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return gyms;
+        return flipFitGyms;
     }
 
     @Override
-    public List<GymOwner> getUnverifiedGymOwner() {
+    public List<FlipFitGymOwner> getUnverifiedGymOwner() {
         conn = DatabaseConnector.getConnection();
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        List<GymOwner> gymOwners = new ArrayList<>();
+        List<FlipFitGymOwner> flipFitGymOwners = new ArrayList<>();
 
         try {
             String sqlQuery = SQLConstants.ADMIN_VIEW_UNVERIFIED_GYMOWNER;
@@ -242,7 +242,7 @@ public class FlipFitAdminDAOImpl implements FlipFitAdminDAOInterface {
                 String nationalId = resultSet.getString("aadhar");
                 String gst = resultSet.getString("gst");
 
-                GymOwner x = new GymOwner();
+                FlipFitGymOwner x = new FlipFitGymOwner();
                 x.setOwnerId(id);
                 x.setOwnerName(name);
                 x.setOwnerEmail(email);
@@ -250,11 +250,11 @@ public class FlipFitAdminDAOImpl implements FlipFitAdminDAOInterface {
                 x.setNationalId(nationalId);
                 x.setGST(gst);
 
-                gymOwners.add(x);
+                flipFitGymOwners.add(x);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return gymOwners;
+        return flipFitGymOwners;
     }
 }

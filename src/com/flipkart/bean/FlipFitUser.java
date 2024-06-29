@@ -1,6 +1,6 @@
 package com.flipkart.bean;
 
-public class User {
+public class FlipFitUser {
 	private int userId; // Unique identifier for the user
 
 	private String userName; // User's name

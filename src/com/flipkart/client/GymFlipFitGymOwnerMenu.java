@@ -1,8 +1,10 @@
-package com.flipkart.application;
-
-import com.flipkart.bean.Gym;
-import com.flipkart.bean.GymOwner;
-import com.flipkart.bean.Slots;
+/**
+ * 
+ */
+package com.flipkart.client;
+import com.flipkart.bean.FlipFitGym;
+import com.flipkart.bean.FlipFitGymOwner;
+import com.flipkart.bean.FlipFitSlots;
 import com.flipkart.business.FlipFitGymOwnerService;
 import com.flipkart.business.FlipFitGymOwnerServiceOperation;
 
@@ -12,6 +14,12 @@ import java.util.List;
 import java.util.Scanner;
 
 import static com.flipkart.constants.ColorConstants.*;
+//public class FlipFitGymOwner {
+//
+//}
+////package com.flipkart.application;
+//
+//i
 
 
 public class GymFlipFitGymOwnerMenu {
@@ -29,17 +37,17 @@ public class GymFlipFitGymOwnerMenu {
         if (flipFitGymOwnerService.validateLogin(email, password)) {
             System.out.println(ANSI_BLUE+ "Login Successful"+ANSI_RESET);
             while (true) {
-                System.out.println("Gym Owner menu--------------------");
-                System.out.println("1. Add a gym");
-                System.out.println("2. View all gyms");
-                System.out.println("3. Logout");
+                System.out.println(ANSI_CYAN+"***********GYM OWNER MENU***********");
+                System.out.println("1. View all available gyms");
+                System.out.println("2. Add your Gym");
+                System.out.println("3. Logout"+ANSI_RESET);
                 int y = Integer.parseInt(obj.nextLine());
 
                 switch (y) {
-                    case 1:
+                    case 2:
                         addGym(email);
                         break;
-                    case 2:
+                    case 1:
                         displayGyms(email);
                         break;
                     case 3:
@@ -51,7 +59,7 @@ public class GymFlipFitGymOwnerMenu {
 
 
     void addGym(String userId) {
-        Gym gym = new Gym();
+        FlipFitGym flipFitGym = new FlipFitGym();
 
         System.out.println("Enter the following info:");
         System.out.println("\nEnter gym name:");
@@ -61,11 +69,11 @@ public class GymFlipFitGymOwnerMenu {
         System.out.println("\nGym Location:");
         String location = obj.nextLine();
 
-        gym.setGymAddress(address);
-        gym.setLocation(location);
-        gym.setGymName(gymName);
-        gym.setStatus("unverified");
-        List<Slots> slots = new ArrayList<>();
+        flipFitGym.setGymAddress(address);
+        flipFitGym.setLocation(location);
+        flipFitGym.setGymName(gymName);
+        flipFitGym.setStatus("unverified");
+        List<FlipFitSlots> flipFitSlots = new ArrayList<>();
         System.out.println("\nHow many slots to be entered?");
         int slotNo = Integer.parseInt(obj.nextLine());
         int x = 1;
@@ -75,14 +83,14 @@ public class GymFlipFitGymOwnerMenu {
             int startTime = Integer.parseInt(obj.nextLine());
             System.out.println("\nEnter available seats:");
             int number = Integer.parseInt(obj.nextLine());
-            Slots slot = new Slots(x - 1, startTime, number);
-            slots.add(slot);
+            FlipFitSlots slot = new FlipFitSlots(x - 1, startTime, number);
+            flipFitSlots.add(slot);
             slotNo--;
         }
-        gym.setSlots(slots);
-        gym.setOwnerId(userId);
+        flipFitGym.setSlots(flipFitSlots);
+        flipFitGym.setOwnerId(userId);
 
-        flipFitGymOwnerService.addGymWithSlots(gym);
+        flipFitGymOwnerService.addGymWithSlots(flipFitGym);
     }
 
 
@@ -111,29 +119,29 @@ public class GymFlipFitGymOwnerMenu {
             return;
         }
 
-        GymOwner gymOwner = new GymOwner();
-        List<Gym> emptyGymList = new ArrayList<>();
-        gymOwner.setOwnerEmail(ownerEmail);
-        gymOwner.setPAN(PAN);
-        gymOwner.setOwnerName(ownerName);
-        gymOwner.setGST(GST);
-        gymOwner.setPassword(password);
-        gymOwner.setNationalId(nationalId);
-        gymOwner.setPhoneNo(phoneNo);
-        gymOwner.setGyms(emptyGymList);
-        gymOwner.setStatus("verified");
+        FlipFitGymOwner flipFitGymOwner = new FlipFitGymOwner();
+        List<FlipFitGym> emptyGymList = new ArrayList<>();
+        flipFitGymOwner.setOwnerEmail(ownerEmail);
+        flipFitGymOwner.setPAN(PAN);
+        flipFitGymOwner.setOwnerName(ownerName);
+        flipFitGymOwner.setGST(GST);
+        flipFitGymOwner.setPassword(password);
+        flipFitGymOwner.setNationalId(nationalId);
+        flipFitGymOwner.setPhoneNo(phoneNo);
+        flipFitGymOwner.setGyms(emptyGymList);
+        flipFitGymOwner.setStatus("verified");
 
-        flipFitGymOwnerService.createGymOwner(gymOwner);
+        flipFitGymOwnerService.createGymOwner(flipFitGymOwner);
     }
 
 
     void displayGyms(String userId) {
-        List<Gym> gymsList = flipFitGymOwnerService.viewMyGyms(userId);
+        List<FlipFitGym> gymsList = flipFitGymOwnerService.viewMyGyms(userId);
         int x = 1;
-        for (Gym gym : gymsList) {
-            System.out.println("Gym " + x + ": Name " + gym.getGymName() + "     Address: " + gym.getGymAddress() + "       Location: " + gym.getLocation());
+        for (FlipFitGym flipFitGym : gymsList) {
+            System.out.println("Gym " + x + ": Name " + flipFitGym.getGymName() + "     Address: " + flipFitGym.getGymAddress() + "       Location: " + flipFitGym.getLocation());
             System.out.println("Slots: ");
-            for (Slots slot : gym.getSlots()) {
+            for (FlipFitSlots slot : flipFitGym.getSlots()) {
                 System.out.println("Slot: " + slot.getSlotsId() + " Slot Time: " + slot.getStartTime() + " - " + (slot.getStartTime() + 1) + " Seats: " + slot.getSeatCount());
             }
             x++;

@@ -1,5 +1,7 @@
-package com.flipkart.application;
-
+/**
+ * 
+ */
+package com.flipkart.client;
 import com.flipkart.business.FlipFitGymOwnerService;
 import com.flipkart.business.FlipFitGymOwnerServiceOperation;
 import com.flipkart.business.FlipFitUserServiceOperations;
@@ -12,6 +14,25 @@ import java.util.Scanner;
 
 import static com.flipkart.constants.ColorConstants.*;
 
+
+/**
+ * 
+ */
+//public class GymFlipFitApplication {
+//
+//	/**
+//	 * @param args
+//	 */
+//	public static void main(String[] args) {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//}
+
+//package com.flipkart.application;
+
+
 public class GymFlipFitApplication {
     static GymFlipFitGymOwnerMenu owner = new GymFlipFitGymOwnerMenu();
     static GymFlipFitCustomerMenu customer = new GymFlipFitCustomerMenu();
@@ -20,23 +41,23 @@ public class GymFlipFitApplication {
     static FlipFitUserServices userService = new FlipFitUserServiceOperations();
     static Scanner obj = new Scanner(System.in);
 
-    static Properties prop = new Properties();
+    static Properties pr = new Properties();
 
    
     public static void main(String[] args) {
-        System.out.println(ANSI_CYAN + "------------------------------------------------------------------");
-        System.out.println("        Welcome to FlipFit application for slot booking!");
-        System.out.println("--------------------------------------------------------------------" + ANSI_RESET);
+        System.out.println(ANSI_GREEN + "************************************************************" + ANSI_RESET);
+        System.out.println("        Welcome to the FlipFit Application!!");
+        System.out.println(ANSI_GREEN +"************************************************************" + ANSI_RESET);
         boolean exitFlag = false;
         while(true) {
-            System.out.println("================================");
-            System.out.println("Press 1 for Login");
-            System.out.println("Press 2 for Registration");
+            System.out.println(ANSI_CYAN+ "================================");
+            System.out.println("Press 1 for Registration");
+            System.out.println("Press 2 for Login");
             System.out.println("Press 3 for Update Password");
-            System.out.println("Press 4 for Exit");
-            int x = Integer.parseInt(obj.nextLine());
-            switch (x) {
-                case 1 :
+            System.out.println("Press 4 for Exit"+ANSI_RESET);
+            int option= Integer.parseInt(obj.nextLine());
+            switch (option) {
+                case 2 :
                     System.out.println("Enter email");
                     String userId = obj.nextLine();
                     System.out.println("Enter password");
@@ -119,16 +140,16 @@ public class GymFlipFitApplication {
                     }
 
                     break;
-                case 2 :
-                    System.out.println("Press 1 to Register as a Customer");
-                    System.out.println("Press 2 to Register as a Gym Owner");
-                    System.out.println("Press 3 to Go Back");
+                case 1 :
+                    System.out.println(ANSI_CYAN+"Press 1 to Register as a GymOwner");
+                    System.out.println("Press 2 to Register as a Customer");
+                    System.out.println("Press 3 to Go Back"+ANSI_RESET);
                     int k = Integer.parseInt(obj.nextLine());
                     switch(k){
-                        case 1:
+                        case 2:
                             customer.createCustomer();
                             break;
-                        case 2:
+                        case 1:
                             owner.createGymOwner();
                         default:
                             break;

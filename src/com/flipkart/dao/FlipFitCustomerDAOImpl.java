@@ -1,9 +1,9 @@
 package com.flipkart.dao;
 
-import com.flipkart.bean.Bookings;
-import com.flipkart.bean.Gym;
-import com.flipkart.bean.Slots;
-import com.flipkart.bean.User;
+import com.flipkart.bean.FlipFitBookings;
+import com.flipkart.bean.FlipFitGym;
+import com.flipkart.bean.FlipFitSlots;
+import com.flipkart.bean.FlipFitUser;
 import com.flipkart.exception.BookingCancellationFailedException;
 import com.flipkart.exception.RegistrationFailedException;
 import com.flipkart.exception.SlotsUnavailableException;
@@ -20,11 +20,11 @@ public class FlipFitCustomerDAOImpl implements FlipFitCustomerDAOInterface {
     DatabaseConnector connector ;
     Connection conn;
     @Override
-    public List<Gym> getAllGymsByArea() {
+    public List<FlipFitGym> getAllGymsByArea() {
         conn = DatabaseConnector.getConnection();
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        List<Gym> gyms = new ArrayList<>();
+        List<FlipFitGym> flipFitGyms = new ArrayList<>();
 
         try {
             String sqlQuery = "SELECT * FROM gyms";
@@ -39,23 +39,23 @@ public class FlipFitCustomerDAOImpl implements FlipFitCustomerDAOInterface {
                 String status = resultSet.getString("status");
                 String gymOwnerID = resultSet.getString("ownerid");
                 if(Objects.equals(status, "verified")) continue;
-                Gym gym = new Gym();
-                gym.setGymName(gymName);
-                gym.setGymAddress(gymAddress);
-                gym.setOwnerId(gymOwnerID);
-                gym.setLocation(location);
-                gym.setStatus(status);
-                gym.setGymId(id);
-                gyms.add(gym);
+                FlipFitGym flipFitGym = new FlipFitGym();
+                flipFitGym.setGymName(gymName);
+                flipFitGym.setGymAddress(gymAddress);
+                flipFitGym.setOwnerId(gymOwnerID);
+                flipFitGym.setLocation(location);
+                flipFitGym.setStatus(status);
+                flipFitGym.setGymId(id);
+                flipFitGyms.add(flipFitGym);
 
-                List<Slots> slots = getGymSlotsWithGymId(id);
-                gym.setSlots(slots);
+                List<FlipFitSlots> flipFitSlots = getGymSlotsWithGymId(id);
+                flipFitGym.setSlots(flipFitSlots);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());;
         }
 
-        return gyms;
+        return flipFitGyms;
     }
 
     @Override
@@ -127,7 +127,7 @@ public class FlipFitCustomerDAOImpl implements FlipFitCustomerDAOInterface {
         conn = DatabaseConnector.getConnection();
         Statement statement = null;
         int resultSet = 0;
-        List<Slots> slotList = new ArrayList<>();
+        List<FlipFitSlots> slotList = new ArrayList<>();
         PreparedStatement preparedStatement = null;
         try {
             String sqlQuery = "UPDATE slots SET seatCount= " + x + "   WHERE gymId= " + gymId + " AND startTime= " + time;
@@ -167,11 +167,11 @@ public class FlipFitCustomerDAOImpl implements FlipFitCustomerDAOInterface {
     }
 
     @Override
-    public List<Bookings> getAllBookingByUserID(String userId) {
+    public List<FlipFitBookings> getAllBookingByUserID(String userId) {
         conn = DatabaseConnector.getConnection();
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        List<Bookings> bookings = new ArrayList<>();
+        List<FlipFitBookings> flipFitBookings = new ArrayList<>();
 
         try {
             String sqlQuery = "SELECT * FROM Booking where userId=\"" + userId + "\"";
@@ -185,20 +185,20 @@ public class FlipFitCustomerDAOImpl implements FlipFitCustomerDAOInterface {
                 int slotId = resultSet.getInt("slotId");
                 String status = resultSet.getString("status");
                 int gymId = resultSet.getInt("gymId");
-                Bookings booking = new Bookings();
+                FlipFitBookings booking = new FlipFitBookings();
                 booking.setBookingId(id);
                 booking.setDate(date);
                 booking.setTime(time);
                 booking.setSlotId(slotId);
                 booking.setStatus(status);
                 booking.setGymId(gymId);
-                bookings.add(booking);
+                flipFitBookings.add(booking);
 
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return bookings;
+        return flipFitBookings;
     }
 
     @Override
@@ -206,7 +206,7 @@ public class FlipFitCustomerDAOImpl implements FlipFitCustomerDAOInterface {
         conn = DatabaseConnector.getConnection();
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        List<Bookings> bookings = new ArrayList<>();
+        List<FlipFitBookings> flipFitBookings = new ArrayList<>();
 
         try {
             String sqlQuery = "DELETE * FROM Booking where bookingId=" + bookingId;
@@ -239,7 +239,7 @@ public class FlipFitCustomerDAOImpl implements FlipFitCustomerDAOInterface {
     }
 
     @Override
-    public void createUser(User user) {
+    public void createUser(FlipFitUser flipFitUser) {
         conn = DatabaseConnector.getConnection();
         Statement statement = null;
         ResultSet resultSet = null;
@@ -253,12 +253,12 @@ public class FlipFitCustomerDAOImpl implements FlipFitCustomerDAOInterface {
 
             // 5. Set values for the placeholders in the prepared statement
 
-            preparedStatement.setString(1, user.getUserName());
-            preparedStatement.setString(2, user.getEmail());
-            preparedStatement.setString(3, user.getPassword());
-            preparedStatement.setString(4, user.getPhoneNumber());
-            preparedStatement.setString(5, user.getAddress());
-            preparedStatement.setString(6, user.getLocation());
+            preparedStatement.setString(1, flipFitUser.getUserName());
+            preparedStatement.setString(2, flipFitUser.getEmail());
+            preparedStatement.setString(3, flipFitUser.getPassword());
+            preparedStatement.setString(4, flipFitUser.getPhoneNumber());
+            preparedStatement.setString(5, flipFitUser.getAddress());
+            preparedStatement.setString(6, flipFitUser.getLocation());
 
             int rowsInserted = preparedStatement.executeUpdate();
 
@@ -277,11 +277,11 @@ public class FlipFitCustomerDAOImpl implements FlipFitCustomerDAOInterface {
         }
     }
 
-    public List<Slots> getGymSlotsWithGymId(int id){
+    public List<FlipFitSlots> getGymSlotsWithGymId(int id){
         conn = DatabaseConnector.getConnection();
         Statement statement = null;
         ResultSet resultSet = null;
-        List<Slots> slotList = new ArrayList<>();
+        List<FlipFitSlots> slotList = new ArrayList<>();
         try {
             String sqlQuery = "SELECT * FROM slots WHERE gymId= " + id;
             statement = conn.createStatement();
@@ -290,9 +290,9 @@ public class FlipFitCustomerDAOImpl implements FlipFitCustomerDAOInterface {
 
                 int startTime = resultSet.getInt("startTime");
                 int seats = resultSet.getInt("seatCount");
-                Slots slots = new Slots(1,startTime,seats);
+                FlipFitSlots flipFitSlots = new FlipFitSlots(1,startTime,seats);
 
-                slotList.add(slots);
+                slotList.add(flipFitSlots);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());

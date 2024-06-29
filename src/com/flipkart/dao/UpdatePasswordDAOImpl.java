@@ -1,9 +1,9 @@
 
 package com.flipkart.dao;
 
-import com.flipkart.bean.Gym;
-import com.flipkart.bean.User;
-import com.flipkart.bean.GymOwner;
+import com.flipkart.bean.FlipFitGym;
+import com.flipkart.bean.FlipFitUser;
+import com.flipkart.bean.FlipFitGymOwner;
 import com.flipkart.constants.SQLConstants;
 import com.flipkart.exception.WrongCredentialsException;
 import com.flipkart.utils.DatabaseConnector;

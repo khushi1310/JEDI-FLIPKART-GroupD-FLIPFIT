@@ -1,7 +1,7 @@
 package com.flipkart.dao;
 
-import com.flipkart.bean.Gym;
-import com.flipkart.bean.GymOwner;
+import com.flipkart.bean.FlipFitGym;
+import com.flipkart.bean.FlipFitGymOwner;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -23,8 +23,8 @@ public interface FlipFitAdminDAOInterface {
     public void verifyGyms(int id);
 
 
-    public List<Gym> getUnverifiedGyms();
+    public List<FlipFitGym> getUnverifiedGyms();
 
 
-    public List<GymOwner> getUnverifiedGymOwner();
+    public List<FlipFitGymOwner> getUnverifiedGymOwner();
 }
