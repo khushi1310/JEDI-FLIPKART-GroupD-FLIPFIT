@@ -15,24 +15,6 @@ import java.util.Scanner;
 import static com.flipkart.constants.ColorConstants.*;
 
 
-/**
- * 
- */
-//public class GymFlipFitApplication {
-//
-//	/**
-//	 * @param args
-//	 */
-//	public static void main(String[] args) {
-//		// TODO Auto-generated method stub
-//
-//	}
-//
-//}
-
-//package com.flipkart.application;
-
-
 public class GymFlipFitApplication {
     static GymFlipFitGymOwnerMenu owner = new GymFlipFitGymOwnerMenu();
     static GymFlipFitCustomerMenu customer = new GymFlipFitCustomerMenu();
@@ -42,6 +24,11 @@ public class GymFlipFitApplication {
     static Scanner obj = new Scanner(System.in);
 
     static Properties pr = new Properties();
+    
+    /*
+     * @main application 
+     * @param args
+     */
 
    
     public static void main(String[] args) {

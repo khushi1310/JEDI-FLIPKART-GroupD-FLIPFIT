@@ -14,25 +14,30 @@ import java.util.List;
 import java.util.Scanner;
 
 import static com.flipkart.constants.ColorConstants.*;
-//public class FlipFitGymOwner {
-//
-//}
-////package com.flipkart.application;
-//
-//i
-
-
+/*
+ * This class represents the Gym Owner menu for the GymFlipfit application
+ * It provides various functions for gym owners such as adding gyms and managing gym information.
+ */
 public class GymFlipFitGymOwnerMenu {
 
     FlipFitGymOwnerService flipFitGymOwnerService = new FlipFitGymOwnerServiceOperation();
     static Scanner obj = new Scanner(System.in);
 
-
+    /*
+     * Verify the gym owner's login credentials.
+     * @param email The email id of the gym owner.
+     * @param password The password of the gym owner.
+     * @return True If login is successful, false otherwise.
+     */
     boolean verifyGymOwner(String email, String password) {
         return flipFitGymOwnerService.validateLogin(email, password);
     }
 
-
+    /*
+     * Perform gym owner login and display the gym owner menu.
+     * @param password The password of the gym owner.
+     * @return true if login is successful, false otherwise.
+     */
     boolean gymOwnerLogin(String email, String password) {
         if (flipFitGymOwnerService.validateLogin(email, password)) {
             System.out.println(ANSI_BLUE+ "Login Successful"+ANSI_RESET);
@@ -57,7 +62,10 @@ public class GymFlipFitGymOwnerMenu {
         } else return false;
     }
 
-
+    /*
+     * Add a gym with slots.
+     * @param userId The ID of the gym owner.
+     */
     void addGym(String userId) {
         FlipFitGym flipFitGym = new FlipFitGym();
 
@@ -93,7 +101,9 @@ public class GymFlipFitGymOwnerMenu {
         flipFitGymOwnerService.addGymWithSlots(flipFitGym);
     }
 
-
+    /*
+     * Create a new gym owner
+     */
     void createGymOwner() {
         System.out.println("Enter the following info:");
         System.out.println("\nYour email: ");
@@ -134,7 +144,10 @@ public class GymFlipFitGymOwnerMenu {
         flipFitGymOwnerService.createGymOwner(flipFitGymOwner);
     }
 
-
+    /*
+     * Display all gyms owned by the gym owner.
+     * @param userId The ID of the gym owner.
+     */
     void displayGyms(String userId) {
         List<FlipFitGym> gymsList = flipFitGymOwnerService.viewMyGyms(userId);
         int x = 1;

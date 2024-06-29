@@ -10,12 +10,20 @@ import java.util.Scanner;
 
 import static com.flipkart.constants.ColorConstants.*;
 
-
+/*
+ * This class represents the customer menu for the GymFlipFit application
+ * It provides various functions for customer actions such as viewing gyms, booking slots, and managing bookings.
+ */
 public class GymFlipFitCustomerMenu {
     static Scanner obj = new Scanner(System.in);
     FlipFitUserServiceOperations userServiceOperation = new FlipFitUserServiceOperations();
     FlipFitUser flipFitUser = new FlipFitUser();
-
+/*
+ * perfom user login and display the customer menu
+ * @param username The username of the customer
+ * @param pass The password of the customer
+ * @return True if login is successful, false otherwise
+ */
     public boolean userLogin(String username, String pass) {
         if (validateUser(username, pass)) {
             boolean flag = true;
@@ -81,7 +89,9 @@ public class GymFlipFitCustomerMenu {
         return true;
     }
 
-
+/*
+ *Print the lists of gym
+ */
     private void printGyms(List<FlipFitGym> y) {
         for (FlipFitGym flipFitGym : y) {
             System.out.println("====================");
@@ -100,43 +110,70 @@ public class GymFlipFitCustomerMenu {
         }
     }
 
-
+/*
+ *validate user credentials.
+ *@param username The username of the customer
+ *@param pass The password of the customer
+ *@return True if user credentials are valid, false otherwise
+ */
     public boolean validateUser(String username, String pass) {
         return userServiceOperation.validateUser(username, pass);
     }
 
-
+/*
+ *View all gyms with available slots
+ *@return list of gyms with available slots.
+ */
     List<FlipFitGym> viewAllGymswithSlots() {
         System.out.println("List of Gyms");
         List<FlipFitGym> gymList = userServiceOperation.getAllGymsWithSlots();
         return gymList;
     }
 
-
+/*
+ * Book a slot for a specific gym
+ * @param gymId The Id of the gym
+ * @param time The slot time
+ * @param email The email of the user booking the slot
+ * @return True if the slot is booked successfully, false otherwise
+ */
     public boolean bookSlot(int gymId, int time, String email) {
         return userServiceOperation.bookSlots(gymId, time, email);
     }
 
-
+/*
+ *Cancel a booked slot
+ *@param bookingId The ID of the booking to be cancelled.
+ */
     public void cancelSlot(int bookingId) {
         System.out.println(ANSI_BLUE+ "Slot Cancelled"+ ANSI_RESET);
         userServiceOperation.cancelSlots(bookingId);
     }
 
-
+/*
+ *View all bookings of a specific user.
+ *@param userid The ID of the user.
+ *@return List of user's bookings.
+ */
     public List<FlipFitBookings> viewAllBookings(String userid) {
         List<FlipFitBookings> myBookings = userServiceOperation.getAllBookings(userid);
         return myBookings;
     }
 
-
+/*
+ *View all gyms in a specific area.
+ *@param location The location (area) to filter gyms
+ *@return List of gyms in the specified area.
+ */
     List<FlipFitGym> viewAllGymsByArea(String location) {
         System.out.println("List of Gyms");
         List<FlipFitGym> gymList = userServiceOperation.getAllGymsByArea(location);
         return gymList;
     }
 
-
+/*/
+ * Create a new customer user.
+ */
     public void createCustomer() {
         System.out.println("Enter the following info:");
         System.out.println("\nYour email: ");
