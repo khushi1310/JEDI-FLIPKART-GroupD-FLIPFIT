@@ -3,15 +3,15 @@ package com.flipkart.business;
 
 import java.util.List;
 
-import com.flipkart.bean.Gym;
-import com.flipkart.bean.GymOwner;
+import com.flipkart.bean.FlipFitGym;
+import com.flipkart.bean.FlipFitGymOwner;
 
 public interface FlipFitGymOwnerService {
 
-	void addGymWithSlots(Gym gym);
+	void addGymWithSlots(FlipFitGym flipFitGym);
 
 
-	List<Gym> viewMyGyms(String userId);
+	List<FlipFitGym> viewMyGyms(String userId);
 
 
     boolean verifyGymOwnerPassword(String email, String password);
@@ -20,7 +20,7 @@ public interface FlipFitGymOwnerService {
     boolean validateLogin(String email, String password);
 
 
-	void createGymOwner(GymOwner gymOwner);
+	void createGymOwner(FlipFitGymOwner flipFitGymOwner);
 
 
 	void updateGymOwnerPassword(String email, String password, String updatedPassword);

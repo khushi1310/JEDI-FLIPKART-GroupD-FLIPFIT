@@ -2,8 +2,8 @@ package com.flipkart.business;
 
 import java.util.*;
 
-import com.flipkart.bean.Gym;
-import com.flipkart.bean.GymOwner;
+import com.flipkart.bean.FlipFitGym;
+import com.flipkart.bean.FlipFitGymOwner;
 import com.flipkart.dao.FlipfitGymOwnerDAOImpl;
 import com.flipkart.dao.FlipFitGymOwnerDAOInterface;
 import com.flipkart.dao.UpdatePasswordDAOImpl;
@@ -12,7 +12,7 @@ import com.flipkart.dao.UpdatePasswordDAOInterface;
 
 public class FlipFitGymOwnerServiceOperation implements FlipFitGymOwnerService{
 
-	HashMap<String,GymOwner> gymOwners = new HashMap();
+	HashMap<String,FlipFitGymOwner> flipFitGymOwners = new HashMap();
 	FlipFitGymOwnerDAOInterface flipFitGymOwnerDAOInterface = new FlipfitGymOwnerDAOImpl();
 	Scanner obj = new Scanner(System.in);
 	UpdatePasswordDAOInterface updatePasswordInterface = new UpdatePasswordDAOImpl();
@@ -20,12 +20,12 @@ public class FlipFitGymOwnerServiceOperation implements FlipFitGymOwnerService{
 
 
 	@Override
-	public void addGymWithSlots(Gym gym) {
-		flipFitGymOwnerDAOInterface.addGym(gym);
+	public void addGymWithSlots(FlipFitGym flipFitGym) {
+		flipFitGymOwnerDAOInterface.addGym(flipFitGym);
 	}
 
 	@Override
-	public List<Gym> viewMyGyms(String userId){
+	public List<FlipFitGym> viewMyGyms(String userId){
 		return flipFitGymOwnerDAOInterface.viewGymSlots(userId);
 	}
 
@@ -39,8 +39,8 @@ public class FlipFitGymOwnerServiceOperation implements FlipFitGymOwnerService{
 
 
 	@Override
-	public void createGymOwner(GymOwner gymOwner){
-		flipFitGymOwnerDAOInterface.newGymOwner(gymOwner);
+	public void createGymOwner(FlipFitGymOwner flipFitGymOwner){
+		flipFitGymOwnerDAOInterface.newGymOwner(flipFitGymOwner);
 
 	}
 

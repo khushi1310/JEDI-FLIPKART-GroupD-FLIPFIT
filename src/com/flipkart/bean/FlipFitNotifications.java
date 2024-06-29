@@ -1,7 +1,7 @@
 package com.flipkart.bean;
 
 
-public class Notifications {
+public class FlipFitNotifications {
 
     private String category; // Category of the notification
     private String message; // Message content of the notification

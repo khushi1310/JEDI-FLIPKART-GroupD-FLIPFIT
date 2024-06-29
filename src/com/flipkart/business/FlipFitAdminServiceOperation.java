@@ -4,8 +4,8 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
-import com.flipkart.bean.Gym;
-import com.flipkart.bean.GymOwner;
+import com.flipkart.bean.FlipFitGym;
+import com.flipkart.bean.FlipFitGymOwner;
 import com.flipkart.dao.FlipFitAdminDAOImpl;
 import com.flipkart.dao.FlipFitAdminDAOInterface;
 
@@ -48,14 +48,14 @@ public class FlipFitAdminServiceOperation implements FlipFitAdminService{
 
 
 	@Override
-	public List<GymOwner> getUnverifiedGymOwners() {
+	public List<FlipFitGymOwner> getUnverifiedGymOwners() {
 		// TODO Auto-generated method stub
 		return adminDaoInterface.getUnverifiedGymOwner();
 	}
 
 
 	@Override
-	public List<Gym> getUnverifiedGyms() {
+	public List<FlipFitGym> getUnverifiedGyms() {
 		// TODO Auto-generated method stub
 		return adminDaoInterface.getUnverifiedGyms();
 	}

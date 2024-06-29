@@ -3,13 +3,13 @@ package com.flipkart.bean;
 import java.util.List;
 
 
-public class Gym {
+public class FlipFitGym {
 
 	private int gymId;
 	private String gymName;
 	private String gymAddress;
 	private String location;
-	private List<Slots> slots;
+	private List<FlipFitSlots> flipFitSlots;
 	private String ownerId;
 	private String Status;
 
@@ -34,13 +34,13 @@ public class Gym {
 	}
 
 
-	public List<Slots> getSlots() {
-		return slots;
+	public List<FlipFitSlots> getSlots() {
+		return flipFitSlots;
 	}
 
 
-	public void setSlots(List<Slots> slots) {
-		this.slots = slots;
+	public void setSlots(List<FlipFitSlots> flipFitSlots) {
+		this.flipFitSlots = flipFitSlots;
 	}
 
 

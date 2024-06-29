@@ -3,9 +3,9 @@ package com.flipkart.business;
 
 import java.util.List;
 
-import com.flipkart.bean.Bookings;
-import com.flipkart.bean.Gym;
-import com.flipkart.bean.User;
+import com.flipkart.bean.FlipFitBookings;
+import com.flipkart.bean.FlipFitGym;
+import com.flipkart.bean.FlipFitUser;
 
 
 public interface FlipFitUserServices {
@@ -14,13 +14,13 @@ public interface FlipFitUserServices {
 	boolean cancelSlots(int slotId);
 
 
-	List<Bookings> getAllBookings(String userId);
+	List<FlipFitBookings> getAllBookings(String userId);
 
 
-	List<Gym> getAllGymsWithSlots();
+	List<FlipFitGym> getAllGymsWithSlots();
 
 
-	List<Gym> getAllGymsByArea(String area);
+	List<FlipFitGym> getAllGymsByArea(String area);
 
 
 	boolean bookSlots(int gymId, int time, String email);
@@ -29,7 +29,7 @@ public interface FlipFitUserServices {
 	boolean validateUser(String username, String pass);
 
 
-	void createUser(User user);
+	void createUser(FlipFitUser flipFitUser);
 	public boolean verifyGymUserPassword(String email, String password, String updatedPassword);
 
 

@@ -1,7 +1,7 @@
 package com.flipkart.dao;
 
-import com.flipkart.bean.GymOwner;
-import com.flipkart.bean.User;
+import com.flipkart.bean.FlipFitGymOwner;
+import com.flipkart.bean.FlipFitUser;
 
 public interface UpdatePasswordDAOInterface {
 

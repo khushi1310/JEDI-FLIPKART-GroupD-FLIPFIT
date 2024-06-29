@@ -3,9 +3,9 @@ package com.flipkart.business;
 
 import java.util.List;
 
-import com.flipkart.bean.Bookings;
-import com.flipkart.bean.Gym;
-import com.flipkart.bean.User;
+import com.flipkart.bean.FlipFitBookings;
+import com.flipkart.bean.FlipFitGym;
+import com.flipkart.bean.FlipFitUser;
 import com.flipkart.dao.FlipFitCustomerDAOImpl;
 import com.flipkart.dao.FlipFitCustomerDAOInterface;
 import com.flipkart.dao.UpdatePasswordDAOImpl;
@@ -33,7 +33,7 @@ public class FlipFitUserServiceOperations implements FlipFitUserServices {
 
 
 	@Override
-	public List<Bookings> getAllBookings(String userId) {
+	public List<FlipFitBookings> getAllBookings(String userId) {
 		// TODO Auto-generated method stub
 
 		return flipFitCustomerDAOInterface.getAllBookingByUserID( userId);
@@ -41,14 +41,14 @@ public class FlipFitUserServiceOperations implements FlipFitUserServices {
 
 
 	@Override
-	public List<Gym> getAllGymsWithSlots() {
+	public List<FlipFitGym> getAllGymsWithSlots() {
 		// TODO Auto-generated method stub
 		return flipFitCustomerDAOInterface.getAllGymsByArea();
 	}
 
 
 	@Override
-	public List<Gym> getAllGymsByArea(String area) {
+	public List<FlipFitGym> getAllGymsByArea(String area) {
 		// TODO Auto-generated method stub
 		return flipFitCustomerDAOInterface.getAllGymsByArea();
 
@@ -68,8 +68,8 @@ public class FlipFitUserServiceOperations implements FlipFitUserServices {
 
 
 	@Override
-	public void createUser(User user) {
-		flipFitCustomerDAOInterface.createUser(user);
+	public void createUser(FlipFitUser flipFitUser) {
+		flipFitCustomerDAOInterface.createUser(flipFitUser);
 	}
 
 

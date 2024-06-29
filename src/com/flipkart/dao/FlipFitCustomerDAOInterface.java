@@ -1,20 +1,20 @@
 package com.flipkart.dao;
 
-import com.flipkart.bean.Bookings;
-import com.flipkart.bean.Gym;
-import com.flipkart.bean.User;
+import com.flipkart.bean.FlipFitBookings;
+import com.flipkart.bean.FlipFitGym;
+import com.flipkart.bean.FlipFitUser;
 
 import java.util.List;
 
 public interface FlipFitCustomerDAOInterface {
 
-    List<Gym> getAllGymsByArea();
+    List<FlipFitGym> getAllGymsByArea();
 
 
     boolean bookSlot(int gymId, int time, String email);
 
 
-    List<Bookings> getAllBookingByUserID(String userId);
+    List<FlipFitBookings> getAllBookingByUserID(String userId);
 
 
     boolean cancelBooking(int bookingId);
@@ -23,5 +23,5 @@ public interface FlipFitCustomerDAOInterface {
     boolean validateUser(String username, String pass);
 
 
-    void createUser(User user);
+    void createUser(FlipFitUser flipFitUser);
 }

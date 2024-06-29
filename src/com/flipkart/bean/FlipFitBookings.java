@@ -3,7 +3,7 @@ package com.flipkart.bean;
 
 
 
-public class Bookings {
+public class FlipFitBookings {
 	private int bookingId;
 	private int userId;
 	private int createdAt;

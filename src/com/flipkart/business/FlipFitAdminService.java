@@ -1,7 +1,7 @@
 package com.flipkart.business;
 
-import com.flipkart.bean.Gym;
-import com.flipkart.bean.GymOwner;
+import com.flipkart.bean.FlipFitGym;
+import com.flipkart.bean.FlipFitGymOwner;
 
 import java.util.List;
 
@@ -23,9 +23,9 @@ public interface FlipFitAdminService {
     public void verifyGymOwner(int gymOwnerId);
 
 
-    public List<GymOwner> getUnverifiedGymOwners() ;
+    public List<FlipFitGymOwner> getUnverifiedGymOwners() ;
 
 
-    public List<Gym> getUnverifiedGyms() ;
+    public List<FlipFitGym> getUnverifiedGyms() ;
 
 }
