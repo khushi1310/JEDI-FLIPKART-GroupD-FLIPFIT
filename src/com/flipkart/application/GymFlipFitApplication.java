@@ -1,9 +1,9 @@
 package com.flipkart.application;
 
-import com.flipkart.business.GymOwnerService;
-import com.flipkart.business.GymOwnerServiceOperation;
-import com.flipkart.business.UserServiceOperations;
-import com.flipkart.business.UserServices;
+import com.flipkart.business.FlipFitGymOwnerService;
+import com.flipkart.business.FlipFitGymOwnerServiceOperation;
+import com.flipkart.business.FlipFitUserServiceOperations;
+import com.flipkart.business.FlipFitUserServices;
 import com.flipkart.utils.DatabaseConnector;
 
 import java.io.InputStream;
@@ -15,9 +15,9 @@ import static com.flipkart.constants.ColorConstants.*;
 public class GymFlipFitApplication {
     static GymFlipFitGymOwnerMenu owner = new GymFlipFitGymOwnerMenu();
     static GymFlipFitCustomerMenu customer = new GymFlipFitCustomerMenu();
-    static GymOwnerService gymOwnerService = new GymOwnerServiceOperation();
+    static FlipFitGymOwnerService flipFitGymOwnerService = new FlipFitGymOwnerServiceOperation();
 
-    static UserServices userService = new UserServiceOperations();
+    static FlipFitUserServices userService = new FlipFitUserServiceOperations();
     static Scanner obj = new Scanner(System.in);
 
     static Properties prop = new Properties();
@@ -158,7 +158,7 @@ public class GymFlipFitApplication {
                                 System.out.println(ANSI_YELLOW+"Invalid credentials"+ANSI_RESET);
                             }
                             else{
-                                gymOwnerService.updateGymOwnerPassword(user,userPassword, updatedPassword);
+                                flipFitGymOwnerService.updateGymOwnerPassword(user,userPassword, updatedPassword);
                             }
 
                             break;

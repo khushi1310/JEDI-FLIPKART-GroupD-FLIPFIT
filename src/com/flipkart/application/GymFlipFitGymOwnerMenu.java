@@ -3,8 +3,8 @@ package com.flipkart.application;
 import com.flipkart.bean.Gym;
 import com.flipkart.bean.GymOwner;
 import com.flipkart.bean.Slots;
-import com.flipkart.business.GymOwnerService;
-import com.flipkart.business.GymOwnerServiceOperation;
+import com.flipkart.business.FlipFitGymOwnerService;
+import com.flipkart.business.FlipFitGymOwnerServiceOperation;
 
 import java.net.StandardSocketOptions;
 import java.util.ArrayList;
@@ -16,17 +16,17 @@ import static com.flipkart.constants.ColorConstants.*;
 
 public class GymFlipFitGymOwnerMenu {
 
-    GymOwnerService gymOwnerService = new GymOwnerServiceOperation();
+    FlipFitGymOwnerService flipFitGymOwnerService = new FlipFitGymOwnerServiceOperation();
     static Scanner obj = new Scanner(System.in);
 
 
     boolean verifyGymOwner(String email, String password) {
-        return gymOwnerService.validateLogin(email, password);
+        return flipFitGymOwnerService.validateLogin(email, password);
     }
 
 
     boolean gymOwnerLogin(String email, String password) {
-        if (gymOwnerService.validateLogin(email, password)) {
+        if (flipFitGymOwnerService.validateLogin(email, password)) {
             System.out.println(ANSI_BLUE+ "Login Successful"+ANSI_RESET);
             while (true) {
                 System.out.println("Gym Owner menu--------------------");
@@ -82,7 +82,7 @@ public class GymFlipFitGymOwnerMenu {
         gym.setSlots(slots);
         gym.setOwnerId(userId);
 
-        gymOwnerService.addGymWithSlots(gym);
+        flipFitGymOwnerService.addGymWithSlots(gym);
     }
 
 
@@ -123,12 +123,12 @@ public class GymFlipFitGymOwnerMenu {
         gymOwner.setGyms(emptyGymList);
         gymOwner.setStatus("verified");
 
-        gymOwnerService.createGymOwner(gymOwner);
+        flipFitGymOwnerService.createGymOwner(gymOwner);
     }
 
 
     void displayGyms(String userId) {
-        List<Gym> gymsList = gymOwnerService.viewMyGyms(userId);
+        List<Gym> gymsList = flipFitGymOwnerService.viewMyGyms(userId);
         int x = 1;
         for (Gym gym : gymsList) {
             System.out.println("Gym " + x + ": Name " + gym.getGymName() + "     Address: " + gym.getGymAddress() + "       Location: " + gym.getLocation());

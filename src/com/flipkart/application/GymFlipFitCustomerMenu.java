@@ -2,7 +2,7 @@ package com.flipkart.application;
 import java.util.*;
 
 import com.flipkart.bean.*;
-import com.flipkart.business.UserServiceOperations;
+import com.flipkart.business.FlipFitUserServiceOperations;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -12,7 +12,7 @@ import static com.flipkart.constants.ColorConstants.*;
 
 public class GymFlipFitCustomerMenu {
     static Scanner obj = new Scanner(System.in);
-    UserServiceOperations userServiceOperation = new UserServiceOperations();
+    FlipFitUserServiceOperations userServiceOperation = new FlipFitUserServiceOperations();
     User user = new User();
 
     public boolean userLogin(String username, String pass) {
