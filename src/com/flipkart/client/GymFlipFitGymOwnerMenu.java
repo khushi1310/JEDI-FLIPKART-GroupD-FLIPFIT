@@ -9,11 +9,11 @@ import com.flipkart.business.FlipFitGymOwnerService;
 import com.flipkart.business.FlipFitGymOwnerServiceOperation;
 
 import java.net.StandardSocketOptions;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-import static com.flipkart.constants.ColorConstants.*;
 /*
  * This class represents the Gym Owner menu for the GymFlipfit application
  * It provides various functions for gym owners such as adding gyms and managing gym information.
@@ -40,12 +40,15 @@ public class GymFlipFitGymOwnerMenu {
      */
     boolean gymOwnerLogin(String email, String password) {
         if (flipFitGymOwnerService.validateLogin(email, password)) {
-            System.out.println(ANSI_BLUE+ "Login Successful"+ANSI_RESET);
+        	LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            System.out.println("Login Successful\n"+formattedDateTime);
             while (true) {
-                System.out.println(ANSI_CYAN+"***********GYM OWNER MENU***********");
+                System.out.println("***********GYM OWNER MENU***********");
                 System.out.println("1. View all available gyms");
                 System.out.println("2. Add your Gym");
-                System.out.println("3. Logout"+ANSI_RESET);
+                System.out.println("3. Logout");
                 int y = Integer.parseInt(obj.nextLine());
 
                 switch (y) {
@@ -117,7 +120,7 @@ public class GymFlipFitGymOwnerMenu {
         System.out.println("\nNation ID/ Aadhaar Number: ");
         String nationalId = obj.nextLine();
         if (nationalId.length() != 12) {
-            System.out.println(ANSI_YELLOW + "Invalid Adhaar No. Enter a valid adhaar!" + ANSI_RESET);
+            System.out.println("Invalid Adhaar No. Enter a valid adhaar!");
             return;
         }
         System.out.println("\nGST: ");
@@ -125,7 +128,7 @@ public class GymFlipFitGymOwnerMenu {
         System.out.println("\nPAN Details: ");
         String PAN = obj.nextLine();
         if (PAN.length() != 10) {
-            System.out.println(ANSI_YELLOW + "Invalid Pan Card No. Enter a valid Pan Card No!" + ANSI_RESET);
+            System.out.println("Invalid Pan Card No. Enter a valid Pan Card No!");
             return;
         }
 

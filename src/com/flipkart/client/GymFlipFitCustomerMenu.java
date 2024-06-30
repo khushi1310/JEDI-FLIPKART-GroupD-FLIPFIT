@@ -1,5 +1,7 @@
 package com.flipkart.client;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import com.flipkart.bean.*;
@@ -7,9 +9,6 @@ import com.flipkart.business.FlipFitUserServiceOperations;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import static com.flipkart.constants.ColorConstants.*;
-
 /*
  * This class represents the customer menu for the GymFlipFit application
  * It provides various functions for customer actions such as viewing gyms, booking slots, and managing bookings.
@@ -24,18 +23,23 @@ public class GymFlipFitCustomerMenu {
  * @param pass The password of the customer
  * @return True if login is successful, false otherwise
  */
+    
+        
     public boolean userLogin(String username, String pass) {
         if (validateUser(username, pass)) {
             boolean flag = true;
-            System.out.println(ANSI_YELLOW+ "Login Successful\n"+ANSI_RESET);
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            System.out.println("Login Successful\n"+formattedDateTime);
             while (flag) {
-                System.out.println(ANSI_CYAN+"*********CUSTOMER MENU*********\n");
+                System.out.println("*********CUSTOMER MENU*********\n");
                 System.out.println("Press 1 to Book your slot");
                 System.out.println("Press 2 to View all available gyms with slots");
                 System.out.println("Press 3 to View all your bookings");
-                System.out.println("Press 4 to View all gyms by area");
-                System.out.println("Press 5 to Cancel your slot");
-                System.out.println("Press 6 to Logout"+ANSI_RESET);
+//                System.out.println("Press 4 to View all gyms by area");
+//                System.out.println("Press 5 to Cancel your slot");
+                System.out.println("Press 4 to Logout");
                 int choice = Integer.parseInt(obj.nextLine());
                 switch (choice) {
                     case 2:
@@ -52,19 +56,19 @@ public class GymFlipFitCustomerMenu {
                         int time = Integer.parseInt(obj.nextLine());
 
                         if (bookSlot(gymId, time, username)) {
-                            System.out.println(ANSI_BLUE+ "Booked Successfully"+ANSI_RESET);
+                            System.out.println("Booked Successfully");
                         } else {
-                            System.out.println(ANSI_YELLOW+ "Booking Unsuccessful"+ ANSI_RESET);
+                            System.out.println("Booking Unsuccessful");
                         }
                         break;
-                    case 5:
-                        Scanner sc = new Scanner(System.in);
-                        System.out.println("My Bookings");
-                        System.out.println(viewAllBookings(username));
-                        System.out.println("Enter Booking ID");
-                        int bookingId = sc.nextInt();
-                        cancelSlot(bookingId);
-                        break;
+//                    case 5:
+//                        Scanner sc = new Scanner(System.in);
+//                        System.out.println("My Bookings");
+//                        System.out.println(viewAllBookings(username));
+//                        System.out.println("Enter Booking ID");
+//                        int bookingId = sc.nextInt();
+//                        cancelSlot(bookingId);
+//                        break;
                     case 3:
                         System.out.println("My Bookings");
                         List<FlipFitBookings> flipFitBookings = viewAllBookings(username);
@@ -72,16 +76,16 @@ public class GymFlipFitCustomerMenu {
                             System.out.println("Booking ID: " + booking.getBookingId() + " Booking Status: " + booking.getStatus() + " Time: " + booking.getTime() + " GymID: " + booking.getGymId());
                         }
                         break;
+//                    case 4:
+//                        String location = "bangalore";
+//                        List<FlipFitGym> gyms2 = viewAllGymsByArea(location);
+//                        printGyms(gyms2);
+//                        break;
                     case 4:
-                        String location = "bangalore";
-                        List<FlipFitGym> gyms2 = viewAllGymsByArea(location);
-                        printGyms(gyms2);
-                        break;
-                    case 6:
                         flag = false;
                         break;
                     default:
-                        System.out.println(ANSI_YELLOW+ "Wrong Choice"+ANSI_RESET);
+                        System.out.println("Wrong Choice");
                 }
             }
 
@@ -146,7 +150,7 @@ public class GymFlipFitCustomerMenu {
  *@param bookingId The ID of the booking to be cancelled.
  */
     public void cancelSlot(int bookingId) {
-        System.out.println(ANSI_BLUE+ "Slot Cancelled"+ ANSI_RESET);
+        System.out.println("Slot Cancelled");
         userServiceOperation.cancelSlots(bookingId);
     }
 
