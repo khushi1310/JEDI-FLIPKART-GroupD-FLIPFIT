@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.flipkart.client;
 import com.flipkart.business.FlipFitGymOwnerService;
 import com.flipkart.business.FlipFitGymOwnerServiceOperation;
@@ -9,10 +6,10 @@ import com.flipkart.business.FlipFitUserServices;
 import com.flipkart.utils.DatabaseConnector;
 
 import java.io.InputStream;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Properties;
 import java.util.Scanner;
-
-import static com.flipkart.constants.ColorConstants.*;
 
 
 public class GymFlipFitApplication {
@@ -32,16 +29,16 @@ public class GymFlipFitApplication {
 
    
     public static void main(String[] args) {
-        System.out.println(ANSI_GREEN + "************************************************************" + ANSI_RESET);
+        System.out.println("************************************************************");
         System.out.println("        Welcome to the FlipFit Application!!");
-        System.out.println(ANSI_GREEN +"************************************************************" + ANSI_RESET);
+        System.out.println("************************************************************");
         boolean exitFlag = false;
         while(true) {
-            System.out.println(ANSI_CYAN+ "================================");
+            System.out.println("================================");
             System.out.println("Press 1 for Registration");
             System.out.println("Press 2 for Login");
             System.out.println("Press 3 for Update Password");
-            System.out.println("Press 4 for Exit"+ANSI_RESET);
+            System.out.println("Press 4 for Exit");
             int option= Integer.parseInt(obj.nextLine());
             switch (option) {
                 case 2 :
@@ -57,22 +54,25 @@ public class GymFlipFitApplication {
                             GymFlipFitAdminMenu admin = new GymFlipFitAdminMenu();
 
                             if(!admin.verifyAdminCredentials(userId,password)){
-                                System.out.println(ANSI_YELLOW + "Invalid Credentials"+ANSI_RESET);
+                                System.out.println("Invalid Credentials");
                                 break;
                             }
 
                             boolean flag = true;
-
+                            LocalDateTime now = LocalDateTime.now();
+                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                            String formattedDateTime = now.format(formatter);
+                            System.out.println("Login Successful\n"+formattedDateTime);
                             while(flag) {
 
                                 System.out.println("Press 1 for View all users");
                                 System.out.println("Press 2 for View all Gyms");
                                 System.out.println("Press 3 for View all Gym Owners");
                                 System.out.println("Press 4 for Verify Gym");
-                                System.out.println("Press 5 for Verify GymOwner");
-                                System.out.println("Press 6 for View pending Gyms");
-                                System.out.println("Press 7 for View pending Gym Owners");
-                                System.out.println("Press 8 for Exit");
+//                                System.out.println("Press 5 for Verify GymOwner");
+                                System.out.println("Press 5 for View pending Gyms");
+//                                System.out.println("Press 7 for View pending Gym Owners");
+                                System.out.println("Press 6 for Exit");
 
                                 int k = Integer.parseInt(obj.nextLine());
 
@@ -91,18 +91,18 @@ public class GymFlipFitApplication {
                                         int id1 = Integer.parseInt(obj.nextLine());
                                         admin.verifyGym(id1);
                                         break;
+//                                    case 5:
+//                                        System.out.println("Enter the Gym Owner Id to be verified ");
+//                                        int id2 = Integer.parseInt(obj.nextLine());
+//                                        admin.verifyGymOwner(id2);
+//                                        break;
                                     case 5:
-                                        System.out.println("Enter the Gym Owner Id to be verified ");
-                                        int id2 = Integer.parseInt(obj.nextLine());
-                                        admin.verifyGymOwner(id2);
-                                        break;
-                                    case 6:
                                         admin.viewUnverifiedGyms();
                                         break;
-                                    case 7:
-                                        admin.viewUnverifiedGymOwners();
-                                        break;
-                                    case 8:
+//                                    case 7:
+//                                        admin.viewUnverifiedGymOwners();
+//                                        break;
+                                    case 6:
                                         flag = false;
                                         break;
                                 }
@@ -112,25 +112,25 @@ public class GymFlipFitApplication {
 
                         case "Customer" :
                             if(!customer.userLogin(userId,password))
-                                System.out.println(ANSI_YELLOW+"Invalid credentials"+ANSI_RESET);
+                                System.out.println("Invalid credentials");
                             break;
                         case "GymOwner" :
                             if(!owner.gymOwnerLogin(userId,password)){
-                                System.out.println(ANSI_YELLOW+"Invalid credentials"+ANSI_RESET);
+                                System.out.println("Invalid credentials");
                             }
 
                             break;
                         default:
-                            System.out.println(ANSI_YELLOW+"Invalid Options Selected. Please Try Again:("+ANSI_RESET);
+                            System.out.println("Invalid Options Selected. Please Try Again:(");
                             break;
 
                     }
 
                     break;
                 case 1 :
-                    System.out.println(ANSI_CYAN+"Press 1 to Register as a GymOwner");
+                    System.out.println("Press 1 to Register as a GymOwner");
                     System.out.println("Press 2 to Register as a Customer");
-                    System.out.println("Press 3 to Go Back"+ANSI_RESET);
+                    System.out.println("Press 3 to Go Back");
                     int k = Integer.parseInt(obj.nextLine());
                     switch(k){
                         case 2:
@@ -156,14 +156,14 @@ public class GymFlipFitApplication {
                     switch (respectiveRole) {
                         case "Customer" :
                             if(!customer.validateUser(user,userPassword))
-                                System.out.println(ANSI_YELLOW+"Invalid credentials"+ANSI_RESET);
+                                System.out.println("Invalid credentials");
                             else{
                                 userService.updateGymUserPassword(user,userPassword, updatedPassword);
                             }
                             break;
                         case "GymOwner" :
                             if(!owner.verifyGymOwner(user,userPassword)){
-                                System.out.println(ANSI_YELLOW+"Invalid credentials"+ANSI_RESET);
+                                System.out.println("Invalid credentials");
                             }
                             else{
                                 flipFitGymOwnerService.updateGymOwnerPassword(user,userPassword, updatedPassword);
@@ -178,7 +178,7 @@ public class GymFlipFitApplication {
                     System.out.println("Thank you for using FlipFit :)");
                     break;
                 default:
-                    System.out.println(ANSI_YELLOW+"Invalid Options Selected. Please Try Again:( "+ANSI_RESET);
+                    System.out.println("Invalid Options Selected. Please Try Again:( ");
                     break;
                 }
             if(exitFlag)break;
