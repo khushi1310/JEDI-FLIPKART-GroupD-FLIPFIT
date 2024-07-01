@@ -15,7 +15,7 @@ import java.util.Properties;
 
 /*
  * This class represents the administrative menu for the GymFlipFit application.
- * It provides various functions for managing gyms, gym owners, and admin credentials.
+ * It provides various functions for managing gyms, gym owners, and FlipFitAdmin credentials.
  */
 
 public class GymFlipFitAdminMenu {
@@ -91,10 +91,10 @@ public class GymFlipFitAdminMenu {
 	    }
 
 	   /*
-	    * verify admin credentials.
-	    * @param id The admin ID
-	    * @Param pass The admin password
-	    * @return True if admin credentials are valid, false otherwise.
+	    * verify FlipFitAdmin credentials.
+	    * @param id The FlipFitADmin ID
+	    * @Param pass The FlipFitAdmin password
+	    * @return True if FlipFitAdmin credentials are valid, false otherwise.
 	    */
 	    public boolean verifyAdminCredentials(String id, String pass) {
 	        try {

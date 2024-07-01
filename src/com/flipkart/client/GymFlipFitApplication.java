@@ -11,7 +11,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.Properties;
 import java.util.Scanner;
 
-
+/**
+ * Main application class for FlipFit Gym application.
+ */
 public class GymFlipFitApplication {
     static GymFlipFitGymOwnerMenu owner = new GymFlipFitGymOwnerMenu();
     static GymFlipFitCustomerMenu customer = new GymFlipFitCustomerMenu();
@@ -24,7 +26,7 @@ public class GymFlipFitApplication {
     
     /*
      * @main application 
-     * @param args
+     * @param arguments
      */
 
    

@@ -1,6 +1,7 @@
 package com.flipkart.client;
 
 import java.time.LocalDateTime;
+
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
@@ -9,6 +10,9 @@ import com.flipkart.business.FlipFitUserServiceOperations;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+/*
+ * Represents the customer menu for the GymFlipFit Application.
+ */
 /*
  * This class represents the customer menu for the GymFlipFit application
  * It provides various functions for customer actions such as viewing gyms, booking slots, and managing bookings.

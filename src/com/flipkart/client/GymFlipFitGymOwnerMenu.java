@@ -3,6 +3,7 @@
  */
 package com.flipkart.client;
 import com.flipkart.bean.FlipFitGym;
+
 import com.flipkart.bean.FlipFitGymOwner;
 import com.flipkart.bean.FlipFitSlots;
 import com.flipkart.business.FlipFitGymOwnerService;
@@ -14,6 +15,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+/*
+ * Represents the Gym Owner menu for the GymFlipFit Application.
+ */
 /*
  * This class represents the Gym Owner menu for the GymFlipfit application
  * It provides various functions for gym owners such as adding gyms and managing gym information.

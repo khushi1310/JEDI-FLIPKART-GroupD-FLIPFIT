@@ -1,5 +1,8 @@
 package com.flipkart.dao;
 
+/**
+ * Interface for updating passwords and verifying gym owner and gym user passwords.
+ */
 public interface UpdatePasswordDAOInterface {
 
     /**

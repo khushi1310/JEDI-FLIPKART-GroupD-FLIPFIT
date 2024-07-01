@@ -2,7 +2,9 @@
 package com.flipkart.bean;
 
 import java.util.List;
-
+/**
+ * Represents a gym facility with various attributes.
+ */
 public class FlipFitGym {
     private int gymId; 
     private String gymName; 

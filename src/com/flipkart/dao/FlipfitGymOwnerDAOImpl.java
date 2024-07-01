@@ -20,6 +20,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementation of FlipFitGymOwnerDAOInterface for database operations related to gym owners.
+ */
 public class FlipfitGymOwnerDAOImpl implements FlipFitGymOwnerDAOInterface {
     Connection conn;
 
