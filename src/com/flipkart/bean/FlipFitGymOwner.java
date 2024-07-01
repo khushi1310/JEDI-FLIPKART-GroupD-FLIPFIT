@@ -2,6 +2,9 @@
 package com.flipkart.bean;
 
 import java.util.List;
+/**
+ * Represents a gym owner in the FlipFit system.
+ */
 
 public class FlipFitGymOwner {
     private int ownerId;

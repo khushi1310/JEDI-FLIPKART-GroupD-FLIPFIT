@@ -8,6 +8,9 @@ import com.flipkart.bean.FlipFitSlots;
 
 import java.util.List;
 
+/**
+ * Interface specifying operations related to gym owners in the database.
+ */
 public interface FlipFitGymOwnerDAOInterface {
 
     /**

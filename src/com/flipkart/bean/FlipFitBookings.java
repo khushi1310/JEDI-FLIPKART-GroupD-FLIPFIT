@@ -1,6 +1,10 @@
 
 package com.flipkart.bean;
-
+/**
+ * The Bookings class represents a booking made by a user.
+ * It contains information such as booking ID, user ID, creation time,
+ * booking status, date, time, slot ID, gym ID, and status.
+ */
 public class FlipFitBookings {
     private int bookingId;
     private int userId;

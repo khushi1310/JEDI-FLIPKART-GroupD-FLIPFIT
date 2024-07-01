@@ -13,7 +13,9 @@ import java.sql.*;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-
+/**
+ * Implementation of UpdatePasswordDAOInterface for updating passwords and verification.
+ */
 public class UpdatePasswordDAOImpl implements UpdatePasswordDAOInterface {
     DatabaseConnector connector;
     Connection conn;
